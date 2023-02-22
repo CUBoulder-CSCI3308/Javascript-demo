@@ -7,9 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../resources/css/demo.css">
-    <script>
-
-    </script>
   </head>
   <body>
     <br>
@@ -19,6 +16,9 @@
     <div class="container">
       <h4>We'll see a basic in-built alert function</h4>
       <!-- TODO:Implement alert function -->
+      <script  type="text/javascript">
+        alert("Hello World");
+      </script>
     </div>
 
 
@@ -27,15 +27,22 @@
     <div class="container">
       <h4>Now let's see how we can modify the contents of an existing HTML element</h4>
       <hr>
-      <p>There is a paragraph tag after this in which we will populate some text using JS.</p>
-      <p id="changeText">
-        <!-- TODO: Show example of changing inner HTML of a p tag -->
-      </p>
+
+      <!-- TODO: Show example of changing inner HTML of a p tag -->
+      <p>There is a paragraph tag next to this in which we will populate some text using JS.</p>
+      <p id="changeText" style=""> </p>
+      <script type="text/javascript">
+        document.getElementById("changeText").innerHTML = "I am doing this as part of a demo for lecture.";
+      </script>
       <hr>
 
-      <!-- TODO: Show example of changing properties of HTML img tag. src alt style.border-->
+      <!-- TODO: Show example of changing properties of HTML img tag -->
       <img id="sb_img" src="../resources/img/SB.png" alt="Spongebob">
-      
+      <script type="text/javascript">
+        document.getElementById('sb_img').src="../resources/img/SB2.jpg";
+        document.getElementById('sb_img').alt="";
+        document.getElementById('sb_img').style.border="10px solid black";
+      </script>
     </div>
   <hr>
   <div class="container">
@@ -44,21 +51,21 @@
     <h6>Onclick</h6>
     <div class="row">
       <div class="col-8">
-        <p id="onclickDemo_textContent">Let's change the <strong>text</strong> in this paragraph when we <strong>click</strong> on the button.</p>
+        <p id="onclickDemo_textContent">Let's change the <strong><u>text</u></strong> in this paragraph when we <strong><u>click</u></strong> on the button.</p>
       </div>
       <div class="col-4">
         <!-- write an inline script for onclick event to change the text in the paragraph -->
-        <button type="button" class="btn btn-primary" name="button">Change Text</button>
+        <button type="button" class="btn btn-primary" name="button" onclick="document.getElementById('onclickDemo_textContent').innerHTML='Modified text for demo.';">Change Text</button>
       </div>
     </div>
     <hr>
     <div class="row">
       <div class="col-8">
-        <p id="onclickDemo_textFont">Let's change the <strong>font</strong> of this paragraph when we <strong>click</strong> on the button.</p>
+        <p id="onclickDemo_textFont">Let's change the <strong><u>font</u></strong> of this paragraph when we <strong><u>click</u></strong> on the button.</p>
       </div>
       <div class="col-4">
         <!-- write an inline script for onclick event to change the text in the paragraph -->
-        <button type="button" class="btn btn-primary" name="button" onclick="">Change Font</button>
+        <button type="button" class="btn btn-primary" name="button" onclick="document.getElementById('onclickDemo_textFont').style.fontFamily='Monospace';">Change Font</button>
       </div>
     </div>
     <hr>
@@ -66,7 +73,7 @@
     <div class="row">
       <div class="col-8">
         <!-- write an inline script for onmouseover event to change the text in the paragraph -->
-        <p id="mouseHoverDemo">Let's change the text in this paragraph when we <strong>hover</strong> on the text.</p>
+        <p id="mouseHoverDemo" onmouseover="document.getElementById('mouseHoverDemo').innerHTML='Text changed';">Let's change the text in this paragraph when we <strong><u>hover</u></strong> on the text.</p>
       </div>
     </div>
     <hr>
@@ -77,10 +84,12 @@
       <div class="col-8">
         <h6>Oh no! The text is permanently changed. I want it to go back to the original text once my mouse is no longer over the text. How do we do that? Let's see.</h6>
         <!-- demo onmouseover and on mouseout -->
-        <p id="mouseEventDemo_txt">Original Text</p>
-
+        <p id="mouseEventDemo_txt"
+        onmouseover="document.getElementById('mouseEventDemo_txt').innerHTML='Text changed';"
+        onmouseout="document.getElementById('mouseEventDemo_txt').innerHTML='Original Text';">Original Text</p>
         <h6>You can do the same with other HTML elements as well. Like this image below.</h6>
-        <img id="mouseEventDemo_img" src="../resources/img/SB.png" alt="Spongebob">
+        <img id="mouseEventDemo_img" src="../resources/img/SB.png" alt="Spongebob"  onmouseover="document.getElementById('mouseEventDemo_img').src='../resources/img/SB2.jpg';"
+        onmouseout="document.getElementById('mouseEventDemo_img').src='../resources/img/SB.png';">
       </div>
     </div>
   </div>
@@ -94,16 +103,18 @@
       let i = 0;
       document.write('<p>');
       while (i < 5) {
-          document.write(days[i] + " ");
+
+          document.write(days[i]);
+
           i += 1;
         }
         document.write('</p>');
     </script>
   </div>
-  <hr>
   <div class="container">
     <h4>How about some user defined functions now? We'll learn how to write functions in ES5 and ES6 standard</h4>
     <hr>
+
     <div class="row">
       <div class="col-8">
         <p id="functionDemo">Let's try to change the text of this paragraph on the click of a button. But this time let's write some functions. </p>
@@ -111,6 +122,12 @@
       <div class="col-4">
         <!-- write a function for onclick event to change the text in the paragraph -->
         <button type="button" class="btn btn-primary" name="button" onclick="changeText();">Change Text</button>
+        <script type="text/javascript">
+          function changeText(){
+            document.getElementById('functionDemo').innerHTML = "Added text to demo use of functions.";
+            document.getElementById('functionDemo').style.color="red";
+          }
+        </script>
       </div>
     </div>
     <hr>
